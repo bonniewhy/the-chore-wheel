@@ -79,6 +79,12 @@ nav a#pull {
     display: none;
 }
 
+.content-container {
+    max-width: 691px;
+    padding-top: 100px;
+    margin: 0 auto;
+}
+
 /* Clearfix Trick for navigation */
 .clearfix:before, .clearfix:after {
     content: " ";

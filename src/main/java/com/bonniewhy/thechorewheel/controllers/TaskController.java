@@ -35,6 +35,8 @@ public class TaskController {
 
         model.addAttribute("title", "Tasks");
         model.addAttribute("modelUser", modelUser);
+        model.addAttribute("rooms", roomDao.findAll());
+        model.addAttribute(new Task());
 
         return "tasks/list-all";
 
@@ -50,26 +52,27 @@ public class TaskController {
         model.addAttribute("title", "Tasks for " + room.getName());
         model.addAttribute("room", room);
         model.addAttribute("modelUser", modelUser);
+        model.addAttribute(new Task());
 
         return "tasks/list-room";
 
     }
 
-    @RequestMapping(value = "add", method = RequestMethod.GET)
-    public String displayAddNewTaskForm(Model model) {
+//    @RequestMapping(value = "add", method = RequestMethod.GET)
+//    public String displayAddNewTaskForm(Model model) {
+//
+//        User currentUser = User.getCurrentUser();
+//
+//        model.addAttribute("title", "Add Tasks");
+//        model.addAttribute("currentUser", currentUser);
+//        model.addAttribute("rooms", roomDao.findAll());
+//        model.addAttribute(new Task());
+//
+//        return "tasks/add";
+//    }
 
-        User currentUser = User.getCurrentUser();
-
-        model.addAttribute("title", "Add Tasks");
-        model.addAttribute("currentUser", currentUser);
-        model.addAttribute("rooms", roomDao.findAll());
-        model.addAttribute(new Task());
-
-        return "tasks/add";
-    }
-
-    @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddNewTaskForm(Model model, @ModelAttribute @Valid Task newTask, Errors errors, @RequestParam int roomId) {
+    @RequestMapping(value = "", method = RequestMethod.POST)
+    public String processAddNewTaskFormListAll(Model model, @ModelAttribute @Valid Task newTask, Errors errors, @RequestParam int roomId) {
 
         User currentUser = User.getCurrentUser();
 
@@ -78,7 +81,7 @@ public class TaskController {
             model.addAttribute("currentUser", currentUser);
             model.addAttribute("rooms", roomDao.findAll());
 
-            return "tasks/add";
+            return "redirect:/task/";
         }
 
         Room room = roomDao.findOne(roomId);
@@ -86,7 +89,29 @@ public class TaskController {
         newTask.setUser(currentUser);
         taskDao.save(newTask);
 
-        return "redirect:/list/" + roomId;
+        return "redirect:/task/";
+
+    }
+
+    @RequestMapping(value = "/list/{roomId}", method = RequestMethod.POST)
+    public String processAddNewTaskFormListRoom(Model model, @ModelAttribute @Valid Task newTask, Errors errors, @RequestParam int formRoomId) {
+
+        User currentUser = User.getCurrentUser();
+
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "List All Tasks");
+            model.addAttribute("currentUser", currentUser);
+            model.addAttribute("rooms", roomDao.findAll());
+
+            return "redirect:/task/list/" + formRoomId;
+        }
+
+        Room room = roomDao.findOne(formRoomId);
+        newTask.setRoom(room);
+        newTask.setUser(currentUser);
+        taskDao.save(newTask);
+
+        return "redirect:/task/list/" + formRoomId;
 
     }
 

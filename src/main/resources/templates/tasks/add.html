@@ -7,7 +7,8 @@
 
 <nav th:replace="fragments :: nav"></nav>
 
-<!-- [ ] TODO: Create the "add" form. Populate a drop down with all the available rooms for this specific user from the room table. -->
+<div class="content-container">
+<!-- [X] TODO: Create the "add" form. Populate a drop down with all the available rooms for this specific user from the room table. -->
 
 <form method="post" th:object="${task}">
 
@@ -29,5 +30,6 @@
 
 </form>
 
+</div>
 </body>
 </html>

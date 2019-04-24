@@ -7,7 +7,9 @@
 
 <nav th:replace="fragments :: nav"></nav>
 
+<div class="content-container">
 <!-- [X] TODO: List all tasks for this specific user. -->
+<!-- [ ] TODO: If there are tasks... for each task list checkbox, task, date last done, room it belongs to. -->
 <h1 th:text="${title}">Default Title</h1>
 
 <p th:unless="${modelUser.tasks.size()}">No tasks yet.</p>
@@ -16,12 +18,27 @@
     <li th:each="task : ${modelUser.tasks}" class="list-group-item" th:text="${task.name}"></li>
 </ul>
 
-<!-- [ ] TODO: If there are tasks... for each task list checkbox, task, date last done, room it belongs to. -->
+<!-- [X] TODO: Add quick add form at the bottom with a drop down for the rooms. -->
+    <form method="post" th:object="${task}">
 
-<!-- [ ] TODO: Figure out how you want to do this visually. -->
+        <div class="form-group">
+            <label th:for="name">Task</label>
+            <input class="form-control" th:field="*{name}" />
+            <span th:errors="*{name}" class="error"></span>
+        </div>
 
-<!-- [X] TODO: Link to add tasks. -->
-<a href="task/add">Add a task.</a>
+        <div class="form-group">
+            <label th:for="room">Room</label>
+            <select name="roomId">
+                <option th:each="room : ${rooms}"
+                        th:text="${room.name}" th:value="${room.id}"></option>
+            </select>
+        </div>
 
+        <input type="submit" value="Add Task" />
+
+    </form>
+
+</div>
 </body>
 </html>
