@@ -6,7 +6,7 @@
 <div th:replace="fragments :: logo"></div>
 
 <nav th:replace="fragments :: nav"></nav>
-
+<div class="content-container">
 <!-- [X] TODO: Hook up functionality to the controller -->
 <div class="table">
     <form method="post" th:object="${user}">
@@ -64,6 +64,6 @@
 
     </form>
 </div>
-
+</div>
 </body>
 </html>

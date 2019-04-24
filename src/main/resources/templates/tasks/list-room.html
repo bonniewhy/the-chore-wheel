@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body>
+
+<div th:replace="fragments :: logo"></div>
+
+<nav th:replace="fragments :: nav"></nav>
+
+<div class="content-container">
+<h1 th:text="${title}">Default Title</h1>
+
+<!-- [X] TODO: List all tasks for specific user for specific room. -->
+<!-- [ ] TODO: For each task, list a clickable checkbox and the task name. -->
+<p th:unless="${modelUser.tasks.size()}">No tasks yet.</p>
+
+<ul class="list-group">
+    <li th:each="task : ${modelUser.tasks}" th:if="${task.getRoom()} == ${room}" class="list-group-item" th:text="${task.name}"></li>
+</ul>
+
+<!-- [X] TODO: Have an easy add form at the bottom that populates the "room" property depending on what room is present in the RequestParam -->
+    <form method="post" th:object="${task}">
+
+        <div class="form-group">
+            <label th:for="name">Task</label>
+            <input class="form-control" th:field="*{name}" />
+            <span th:errors="*{name}" class="error"></span>
+        </div>
+
+        <input type="hidden" name="formRoomId" th:value="${roomId}" />
+
+        <input type="submit" value="Add Task" />
+
+    </form>
+</div>
+</body>
+</html>

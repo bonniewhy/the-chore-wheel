@@ -8,7 +8,7 @@
 <nav th:replace="fragments :: nav"></nav>
 
 <!-- [X] TODO: Add functionality to the controller. -->
-
+<div class="content-container">
 <div th:if="${param.logout != null}" class="alert alert-success">You have been logged out.</div>
 <div th:if="${param.error != null}" class="alert alert-danger">
     <strong>Failed to signin.</strong>
@@ -50,6 +50,7 @@
         </div>
 
     </form>
+</div>
 </div>
 </body>
 </html>

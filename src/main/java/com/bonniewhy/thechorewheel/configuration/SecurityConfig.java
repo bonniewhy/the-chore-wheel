@@ -43,6 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     DataSource dataSource;
 
+    // [ ] TODO: Delve deeper into Spring Security and figure out how to set roles.
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 

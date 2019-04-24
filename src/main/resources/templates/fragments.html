@@ -37,7 +37,7 @@
 <div th:fragment="logo"><a href="/"><img th:src="@{/images/logo.png}" class="logo" /></a></div>
 
 <nav th:fragment="nav" class="clearfix">
-    <!-- [ ] TODO: Add the sign in button to display if there is no one signed in. -->
+    <!-- [X] TODO: Add the sign in button to display if there is no one signed in. -->
     <!-- [X] TODO: Add responsive logo once it's designed. -->
     <!-- [X] TODO: Add actual links to the controller pages. -->
     <ul class="clearfix" sec:authorize="isFullyAuthenticated()">

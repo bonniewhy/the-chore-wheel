@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body>
+
+<div th:replace="fragments :: logo"></div>
+
+<nav th:replace="fragments :: nav"></nav>
+
+<div class="content-container">
+<!-- [X] TODO: Create the "add" form. Populate a drop down with all the available rooms for this specific user from the room table. -->
+
+<form method="post" th:object="${task}">
+
+    <div class="form-group">
+        <label th:for="name">Task</label>
+        <input class="form-control" th:field="*{name}" />
+        <span th:errors="*{name}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="room">Room</label>
+        <select name="roomId">
+            <option th:each="room : ${rooms}"
+            th:text="${room.name}" th:value="${room.id}"></option>
+        </select>
+    </div>
+
+    <input type="submit" value="Add Task" />
+
+</form>
+
+</div>
+</body>
+</html>

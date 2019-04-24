@@ -79,6 +79,12 @@ nav a#pull {
     display: none;
 }
 
+.content-container {
+    max-width: 691px;
+    padding-top: 100px;
+    margin: 0 auto;
+}
+
 /* Clearfix Trick for navigation */
 .clearfix:before, .clearfix:after {
     content: " ";
@@ -439,6 +445,12 @@ nav a#pull {
 }
 
 /* FORM MANIPULATION */
+form {
+    max-width: 450px;
+    padding-top: 150px;
+    margin: 0 auto;
+}
+
 .alert {
     position: relative;
     text-align: center;
@@ -446,9 +458,6 @@ nav a#pull {
 
 .table {
     display: table;
-    width: 50%;
-    margin: 0 auto;
-    padding-top: 20px;
 }
 
 .row {

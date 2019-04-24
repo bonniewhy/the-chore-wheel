@@ -7,9 +7,10 @@
 
 <nav th:replace="fragments :: nav"></nav>
 
+<div class="content-container">
 <h1>Add Tasks</h1>
 
-<!-- [ ] TODO: Hook up functionality with the controller. -->
+<!-- [X] TODO: Hook up functionality with the controller. -->
 <div class="table">
     <form method="post" th:object="${room}">
 
@@ -27,6 +28,7 @@
         </div>
 </form>
 
+</div>
 </div>
 </body>
 </html>

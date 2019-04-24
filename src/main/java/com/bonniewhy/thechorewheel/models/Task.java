@@ -4,8 +4,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
-import java.util.List;
-import java.util.ArrayList;
 
 @Entity
 public class Task {
@@ -15,12 +13,13 @@ public class Task {
     private int id;
 
     @NotNull
-    @Size(min = 3, max = 200)
+    @Size(min = 3)
     private String name;
 
     private boolean checked;
 
-    private Date lastFinished;
+    // [ ] TODO: Figure out how to automatically grab the date and add it as "lastFinished" when a user checks a box to finish the task.
+    // private Date lastFinished;
 
     @ManyToOne
     private Room room;
@@ -31,10 +30,10 @@ public class Task {
     // Constructors
     public Task() { }
 
-    public Task(String name, boolean checked, Date lastFinished) {
+    public Task(String name, boolean checked) {
         this.name = name;
         this.checked = false;
-        this.lastFinished = lastFinished;
+        //this.lastFinished = lastFinished;
     }
 
     // Getters
@@ -50,9 +49,9 @@ public class Task {
         return checked;
     }
 
-    public Date getLastFinished() {
-        return lastFinished;
-    }
+//    public Date getLastFinished() {
+//        return lastFinished;
+//    }
 
     public Room getRoom() {
         return room;
@@ -75,9 +74,9 @@ public class Task {
         this.checked = false;
     }
 
-    public void setLastFinished(Date lastFinished) {
-        this.lastFinished = lastFinished;
-    }
+//    public void setLastFinished(Date lastFinished) {
+//        this.lastFinished = lastFinished;
+//    }
 
     public void setRoom(Room room) {
         this.room = room;
