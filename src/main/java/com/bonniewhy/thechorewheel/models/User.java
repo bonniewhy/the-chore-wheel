@@ -5,7 +5,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
@@ -29,9 +28,10 @@ public class User implements UserDetails {
     private String username;
 
     @NotNull
-    @Size(min = 3, max = 255)
+    @Size(min = 3)
     private String password;
 
+    // [ ] TODO: Figure out how to not save this to the database.
     @NotNull
     private String verifyPassword;
 
@@ -39,7 +39,7 @@ public class User implements UserDetails {
     private String email;
 
     @NotNull
-    @Size(min = 3, max = 50)
+    @Size(min = 3)
     private String favoriteActivity;
 
     @ManyToMany
@@ -50,7 +50,7 @@ public class User implements UserDetails {
     private List<Task> tasks = new ArrayList<>();
 
     // Spring Security Methods
-    // [ ] TODO: Figure out why using the encrypter makes the password too long and how to fix it.
+    // [ ] TODO: Figure out why using the encoder makes the password too long and how to fix it.
 //    public static BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Override
@@ -58,6 +58,7 @@ public class User implements UserDetails {
         return Arrays.asList(new SimpleGrantedAuthority("USER"));
     }
 
+    // [ ] TODO: Figure out if this is the code I need to access to automatically log in new users.
     public static User getCurrentUser() {
         Object loggedInUser = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User currentUser = (User) loggedInUser;
