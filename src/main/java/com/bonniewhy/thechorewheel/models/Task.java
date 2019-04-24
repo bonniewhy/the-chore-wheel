@@ -13,7 +13,7 @@ public class Task {
     private int id;
 
     @NotNull
-    @Size(min = 3, max = 200)
+    @Size(min = 3)
     private String name;
 
     private boolean checked;

@@ -439,6 +439,12 @@ nav a#pull {
 }
 
 /* FORM MANIPULATION */
+form {
+    max-width: 450px;
+    padding-top: 150px;
+    margin: 0 auto;
+}
+
 .alert {
     position: relative;
     text-align: center;
@@ -446,9 +452,6 @@ nav a#pull {
 
 .table {
     display: table;
-    width: 50%;
-    margin: 0 auto;
-    padding-top: 20px;
 }
 
 .row {

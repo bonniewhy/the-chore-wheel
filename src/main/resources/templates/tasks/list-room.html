@@ -7,7 +7,14 @@
 
 <nav th:replace="fragments :: nav"></nav>
 
+<h1 th:text="${title}">Default Title</h1>
+
 <!-- [ ] TODO: List all tasks for specific user for specific room. -->
+<p th:unless="${modelUser.tasks.size()}">No tasks yet.</p>
+
+<ul class="list-group">
+    <li th:each="task : ${modelUser.tasks}" class="list-group-item" th:text="${task.name}"></li>
+</ul>
 
 <!-- [ ] TODO: For each task, list a clickable checkbox and the task name. -->
 

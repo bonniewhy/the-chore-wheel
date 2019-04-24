@@ -7,18 +7,21 @@
 
 <nav th:replace="fragments :: nav"></nav>
 
-<!-- [ ] TODO: List all tasks for this specific user. -->
+<!-- [X] TODO: List all tasks for this specific user. -->
 <h1 th:text="${title}">Default Title</h1>
 
+<p th:unless="${modelUser.tasks.size()}">No tasks yet.</p>
+
 <ul class="list-group">
-    <li th:each=""
+    <li th:each="task : ${modelUser.tasks}" class="list-group-item" th:text="${task.name}"></li>
 </ul>
 
 <!-- [ ] TODO: If there are tasks... for each task list checkbox, task, date last done, room it belongs to. -->
 
 <!-- [ ] TODO: Figure out how you want to do this visually. -->
 
-<!-- [ ] TODO: Link to add tasks. -->
+<!-- [X] TODO: Link to add tasks. -->
+<a href="task/add">Add a task.</a>
 
 </body>
 </html>

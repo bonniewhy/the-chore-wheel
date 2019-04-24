@@ -96,6 +96,10 @@ public class User implements UserDetails {
     }
 
     // Getters
+    public int getId() {
+        return id;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -114,6 +118,14 @@ public class User implements UserDetails {
 
     public String getFavoriteActivity() {
         return favoriteActivity;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
     }
 
     // Setters
@@ -136,6 +148,15 @@ public class User implements UserDetails {
 
     public void setFavoriteActivity(String favoriteActivity) {
         this.favoriteActivity = favoriteActivity;
+    }
+
+    // CRUD Methods
+    public void addTask(Task task) {
+        this.tasks.add(task);
+    }
+
+    public void deleteTask(Task task) {
+        this.tasks.remove(task);
     }
 
     // Other Methods
