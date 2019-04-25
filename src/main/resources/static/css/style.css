@@ -445,9 +445,9 @@ nav a#pull {
 }
 
 /* FORM MANIPULATION */
+
 form {
-    max-width: 450px;
-    padding-top: 150px;
+    max-width: 300px;
     margin: 0 auto;
 }
 
@@ -500,7 +500,7 @@ input[type=text], [type=password], [type=email] {
     font-family: "Overpass", sans-serif;
 }
 
-input[type=submit] {
+.dark {
     background-color: #4F4A3F;
     color: #EAE6D0;
     font-family: "Overpass", sans-serif;
@@ -511,7 +511,19 @@ input[type=submit] {
     cursor: pointer;
 }
 
-/* [ ] TODO: Figure out how to set a size for the form elements so they don't look really horrible when resizing the window. */
+/* [ ] TODO: Figure out how to fade in the hover effect. Also, could be cool to figure out how to make each color correspond to the room the task belongs to... */
+/* LIST MANIPULATION */
+.list-group-item {
+    background-color: #EAE6D0;
+    border: 0;
+}
+
+.list-group-item:hover {
+    background-color: #4F4A3F;
+    color: #EAE6D0;
+}
+
+/* [X] TODO: Figure out how to set a size for the form elements so they don't look really horrible when resizing the window. */
 /* IPAD LANDSCAPE */
 @media screen and (max-width: 1024px) {
 

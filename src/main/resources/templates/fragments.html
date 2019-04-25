@@ -43,7 +43,7 @@
     <ul class="clearfix" sec:authorize="isFullyAuthenticated()">
         <li><a href="/room">My House</a></li>
         <li><a href="/task">My Tasks</a></li>
-        <li><a href="/user/account">My Account</a></li>
+        <!--<li><a href="/user/account">My Account</a></li>-->
         <li><a th:href="@{/signout}" class="button">Sign Out</a></li>
     </ul>
     <ul class="clearfix" sec:authorize="!isFullyAuthenticated()">

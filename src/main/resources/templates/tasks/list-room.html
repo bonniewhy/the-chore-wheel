@@ -11,7 +11,7 @@
 <h1 th:text="${title}">Default Title</h1>
 
 <!-- [X] TODO: List all tasks for specific user for specific room. -->
-<!-- [ ] TODO: For each task, list a clickable checkbox and the task name. -->
+<!-- [ ] TODO: Copy over the code from your list-all file once you figure out how to do it. -->
 <p th:unless="${modelUser.tasks.size()}">No tasks yet.</p>
 
 <ul class="list-group">
@@ -23,13 +23,13 @@
 
         <div class="form-group">
             <label th:for="name">Task</label>
-            <input class="form-control" th:field="*{name}" />
-            <span th:errors="*{name}" class="error"></span>
+            <input th:field="*{name}" class="form-control" autofocus="autofocus" />
+            <div class="form-text"><span th:errors="*{name}" class="error"></span></div>
         </div>
 
         <input type="hidden" name="formRoomId" th:value="${roomId}" />
 
-        <input type="submit" value="Add Task" />
+        <button type="submit" class="btn dark">Add Task</button>
 
     </form>
 </div>

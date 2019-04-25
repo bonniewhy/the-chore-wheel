@@ -9,33 +9,33 @@
 
 <div class="content-container">
 <!-- [X] TODO: List all tasks for this specific user. -->
-<!-- [ ] TODO: If there are tasks... for each task list checkbox, task, date last done, room it belongs to. -->
-<h1 th:text="${title}">Default Title</h1>
+    <h1 th:text="${title}">Default Title</h1>
 
-<p th:unless="${modelUser.tasks.size()}">No tasks yet.</p>
+        <p th:unless="${modelUser.tasks.size()}">No tasks yet.</p>
 
-<ul class="list-group">
-    <li th:each="task : ${modelUser.tasks}" class="list-group-item" th:text="${task.name}"></li>
-</ul>
+        <!-- [ ] TODO: Most likely will have to change this to form elements, or tables or something, but figure out how to add a checkbox for each item that, once you check it off, it will immediately mark the "checked" field of that item to "true". -->
+        <ul class="list-group">
+            <li th:each="task : ${modelUser.tasks}" class="list-group-item" th:text="${task.name}"></li>
+        </ul>
 
 <!-- [X] TODO: Add quick add form at the bottom with a drop down for the rooms. -->
     <form method="post" th:object="${task}">
 
         <div class="form-group">
             <label th:for="name">Task</label>
-            <input class="form-control" th:field="*{name}" />
+            <input th:field="*{name}" class="form-control" autofocus="autofocus" />
             <span th:errors="*{name}" class="error"></span>
         </div>
 
         <div class="form-group">
             <label th:for="room">Room</label>
-            <select name="roomId">
+            <select name="roomId" class="form-control">
                 <option th:each="room : ${rooms}"
                         th:text="${room.name}" th:value="${room.id}"></option>
             </select>
         </div>
 
-        <input type="submit" value="Add Task" />
+        <button type="submit" class="btn dark">Add Task</button>
 
     </form>
 

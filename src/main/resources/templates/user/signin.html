@@ -9,48 +9,36 @@
 
 <!-- [X] TODO: Add functionality to the controller. -->
 <div class="content-container">
-<div th:if="${param.logout != null}" class="alert alert-success">You have been logged out.</div>
-<div th:if="${param.error != null}" class="alert alert-danger">
-    <strong>Failed to signin.</strong>
-    <span th:if="${session[SPRING_SECURITY_LAST_EXCEPTION] != null}">
+    <div th:if="${param.logout != null}" class="alert alert-success">You have been logged out.</div>
+    <div th:if="${param.error != null}" class="alert alert-danger">
+        <strong>Failed to signin.</strong>
+        <span th:if="${session[SPRING_SECURITY_LAST_EXCEPTION] != null}">
         <span th:text="${session[SPRING_SECURITY_LAST_EXCEPTION].message}">Invalid credentials.</span>
-    </span>
-</div>
-
-<div class="table">
-
-    <div class="row">
-        <div class="right">Don't have an account? <a href="signup">Sign up for one!</a></div>
+        </span>
     </div>
 
     <form method="post" th:object="${user}">
 
-        <!--<input type="hidden" name="${_csrf.parameterName" value="${_csrf.token}">-->
+            <div class="form-group">
+                <div class="form-text">Don't have an account? <a href="signup">Sign up for one!</a></div>
+            </div>
 
-        <div class="row">
-            <div class="cell"><label th:for="*{username}">Username</label></div>
-            <div class="cell"><input type="text" th:field="*{username}" /></div>
-        </div>
-        <div class="row">
-            <div class="cell"></div>
-            <div class="cell"><span class="error" th:errors="*{username}"></span></div>
-        </div>
+            <div class="form-group">
+                <label th:for="*{username}">Username</label>
+                <input type="text" th:field="*{username}" class="form-control" autofocus="autofocus" />
+                <div class="form-text"><span class="error" th:errors="*{username}"></span></div>
+            </div>
 
-        <div class="row">
-            <div class="cell"><label th:for="*{password}">Password</label></div>
-            <div class="cell"><input type="password" th:field="*{password}" /></div>
-        </div>
-        <div class="row">
-            <div class="cell"></div>
-            <div class="cell"><span class="error" th:errors="*{password}"></span></div>
-        </div>
+            <div class="form-group">
+                <label th:for="*{password}">Password</label>
+                <input type="password" th:field="*{password}" class="form-control"/>
+                <div class="form-text"><span class="error" th:errors="*{password}"></span></div>
+            </div>
 
-        <div class="row">
-            <div class="cell"><input type="submit" value="I'M READY!" /></div>
-        </div>
+            <button type="submit" class="btn dark">Sign me in!</button>
 
     </form>
-</div>
+
 </div>
 </body>
 </html>
